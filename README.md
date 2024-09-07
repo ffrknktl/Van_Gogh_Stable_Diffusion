@@ -80,3 +80,35 @@ While ComfyUI is running, load the provided Van Gogh style transfer workflow:
 
 1. In ComfyUI, click on `Load Workflow`.
 2. Select the `vangogh-style-transfer-workflow.json` file from the project directory.
+
+
+![image](https://github.com/user-attachments/assets/a0f7e60a-e357-4f0d-b44d-6e5851b33a52)
+
+
+1. Load Image: This node allows the user to upload the image they want to test or transform. The workflow starts from here, where the image is passed to subsequent nodes for processing.
+
+2. Upscale Image: This node increases the resolution of the input image to 512x512 pixels using the `nearest-exact` upscaling method. This resolution was selected because it matches the trained model's resolution, ensuring that the image can be processed correctly without losing important details. The `nearest-exact` method maintains sharp edges, which is essential when applying artistic transformations like the Van Gogh style.
+
+3. Canny: The Canny edge detection node identifies the edges within the image, using a low threshold of 0.30 and a high threshold of 0.70. These values provide a balanced level of edge detection, capturing enough detail without overwhelming the transformation process. It helps to preserve the structure of the original image while applying artistic styles.
+
+4. Preview Image: This node shows a preview of the image at different stages of processing. It's particularly useful to visualize how each step, especially edge detection and ControlNet, affects the final result.
+
+5. Load Checkpoint: This node loads the pre-trained model, fine-tuned on Van Gogh's art style. The model used here is specifically trained to emulate Van Gogh’s style, such as thick brush strokes and vibrant colors. It serves as the core of the style transfer process.
+
+6. Load ControlNet Model: The ControlNet model helps in conditioning the image transformation process by controlling specific aspects like structure. In this case, it assists in transforming the image while preserving key features like edges detected by the Canny node. The pre-selected ControlNet model `control_v11p_sd15_canny` is chosen because it works well with edge maps, ensuring that the structure from the original image remains intact.
+
+7. Apply ControlNet: This node applies the ControlNet conditioning to the image with a strength of 0.80. The strength is set high enough to strongly guide the transformation, but not too high to overpower the Van Gogh style. It ensures a balanced influence between the edge structure and artistic transformation.
+
+8. CLIP Text Encode (Prompt): The prompt “Vincent van Gogh style, thick brush strokes, vibrant colors, post-impressionism” encodes the desired style of transformation. This text prompt guides the model to apply Van Gogh’s artistic style, specifically focusing on his unique brushwork and color palette.
+
+9. CLIP Text Encode (Negative Prompt): The negative prompt “worst quality, low quality, blurry, cropped, lowers” helps in avoiding unwanted artifacts like blurry or low-quality images. This ensures that the generated image remains sharp and clear.
+
+10. KSampler: The KSampler node performs sampling in the latent space. It is set to 20 steps, which is a common choice for generating high-quality images without excessive processing time. The denoise strength is set to 0.80, allowing some level of noise for texture while keeping the image details intact. The Euler sampling method is chosen for its efficiency and quality balance.
+
+11. VAE Decode (Tiled): This node decodes the latent image back into a visible image. The VAE (Variational Autoencoder) model is used to ensure that the generated image maintains the artistic features while keeping the general structure of the original.
+
+12. Save Image: This node saves the final transformed image. It allows the user to export the output after the style transfer and transformation are complete.
+
+13. Empty Latent Image: This node creates an empty latent image for initialization purposes. The latent image size is set to 512x512 to match the model's input requirements, ensuring that the input dimensions are consistent throughout the workflow.
+
+

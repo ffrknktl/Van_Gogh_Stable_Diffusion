@@ -80,6 +80,7 @@ While ComfyUI is running, load the provided Van Gogh style transfer workflow:
 
 1. In ComfyUI, click on `Load Workflow`.
 2. Select the `vangogh-style-transfer-workflow.json` file from the project directory.
+3. Upload images from Load Image node and click Queue Prompt.
 
 
 ![image](https://github.com/user-attachments/assets/a0f7e60a-e357-4f0d-b44d-6e5851b33a52)

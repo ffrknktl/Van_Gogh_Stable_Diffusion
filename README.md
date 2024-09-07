@@ -2,11 +2,10 @@ Van Gogh Style Transfer Using ComfyUI, Stable Diffusion, and ControlNet
 
 This project allows users to transform their images into the style of Vincent Van Gogh using ComfyUI, a fine-tuned Stable Diffusion model, and ControlNet. The workflow is designed for ease of use, allowing users to load images and output stylized versions easily.
 
-![licensed-image](https://github.com/user-attachments/assets/79bc42dd-7f59-44a3-b856-eef5d83a4371)
+![atul-pandey-HlwQXlKkokk-unsplash](https://github.com/user-attachments/assets/a2c1b0b0-6b96-420e-bcf3-2ed1be3c892a)
 
 
-![ComfyUI_00001_](https://github.com/user-attachments/assets/817a6d03-99c8-4ece-9e8b-db474393cd52)
-
+![ComfyUI_00001_](https://github.com/user-attachments/assets/0748da0a-3ec7-4abb-bd53-7c8472304bf2)
 
 
 Project Overview

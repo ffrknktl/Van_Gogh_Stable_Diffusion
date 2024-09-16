@@ -15,7 +15,9 @@ This project enables users to convert any uploaded image into the distinctive st
 Technologies Used
 
 ComfyUI: A node-based visual interface for integrating and running diffusion models.
+
 Stable Diffusion: An open-source AI model used for generating images. 
+
 ControlNet: A tool to guide the Stable Diffusion model, providing more control over the style and structure of generated images. 
 
 Setup Process
